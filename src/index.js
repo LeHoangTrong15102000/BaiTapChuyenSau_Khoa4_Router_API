@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// Import Redux
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import { rootReducer } from './redux/reducers/rootReducer';
+
+
+// tạo ra store của Redux
 
 ReactDOM.render(
   <React.StrictMode>
