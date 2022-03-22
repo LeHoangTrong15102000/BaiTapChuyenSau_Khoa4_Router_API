@@ -1,24 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 // Import Redux
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
 // import { createStore } from "redux";
 // import { rootReducer } from './redux/reducers/rootReducer';
 // Import store
-import store from "./redux/configStore";
+import store from './redux/configStore';
 
 // tạo ra store của Redux
 
 ReactDOM.render(
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <App />
   </Provider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
