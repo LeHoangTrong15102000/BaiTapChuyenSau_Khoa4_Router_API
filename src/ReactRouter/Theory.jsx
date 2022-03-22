@@ -4,7 +4,9 @@
  *    + Hướng dẫn sử dụng antd
  *    + Khái niệm về HOF & HOC - ứng dụng làm template
  *    + React request API (resful  API)
- *    + Middleware Redux saga, redux thunk
+ *    + Middleware Redux saga, redux thunk (Middleware)
+ *         - Thường thì các công ty người ta hay sử dụng saga trong các dự án
+ *         - thunk dễ làm việc hơn còn saga thì khó làm việc hơn
  *    + Cơ chế authorization token
  *    + Bài tập áp dụng
  *    + Xây dựng ứng dụng jira ứng dụng kiến thức tổng hợp
@@ -19,3 +21,4 @@
  * Thư mục assets chứa các tài nguyên hình ảnh, Scss , của ứng dụng
  *
  */
+// Sau này sẽ có thêm configSaga
