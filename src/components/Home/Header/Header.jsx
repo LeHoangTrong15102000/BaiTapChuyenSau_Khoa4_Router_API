@@ -1,13 +1,15 @@
 // Sau này sẽ học về template rất là nhiều ví dụ template về admin , user
 // Header không phải là một trang chỉ là thành phần của trang mà thôi
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import './Header.css';
 
 const Header = () => {
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a className="navbar-brand" href="/">
+      <NavLink className="navbar-brand" to="/">
         Cyberlearn
-      </a>
+      </NavLink>
       <button
         className="navbar-toggler d-lg-none"
         type="button"
@@ -20,19 +22,34 @@ const Header = () => {
       <div className="collapse navbar-collapse" id="collapsibleNavId">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item">
-            <a className="nav-link" href="/home">
+            <NavLink
+              activeClassName="activeNavItem"
+              activeStyle={{ fontWeight: 'bold' }}
+              className="nav-link"
+              to="/home"
+            >
               Home
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/about">
+            <NavLink
+              activeClassName="activeNavItem"
+              activeStyle={{ fontWeight: 'bold' }}
+              className="nav-link"
+              to="/about"
+            >
               About
-            </a>
+            </NavLink>
           </li>
           <li className="nav-item dropdown">
-            <a className="nav-link" href="/contact">
+            <NavLink
+              activeClassName="activeNavItem"
+              activeStyle={{ fontWeight: 'bold' }}
+              className="nav-link"
+              to="/contact"
+            >
               Contact
-            </a>
+            </NavLink>
           </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">

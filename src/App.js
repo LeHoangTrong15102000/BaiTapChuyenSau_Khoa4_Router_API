@@ -1,6 +1,12 @@
 import React from 'react';
 // import Example from './ReactRouter/Example';
-import { BrowserRouter, Route, Routes, Switch } from 'react-router-dom';
+import {
+  BrowserRouter,
+  NavLink,
+  Route,
+  Routes,
+  Switch,
+} from 'react-router-dom';
 import Home from './pages/Home/Home';
 import About from './pages/About/About';
 import Contact from './pages/Contact/Contact';
