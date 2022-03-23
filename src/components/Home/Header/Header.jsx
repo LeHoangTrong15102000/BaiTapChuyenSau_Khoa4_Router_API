@@ -56,9 +56,19 @@ const Header = () => {
               activeClassName="activeNavItem"
               activeStyle={{ fontWeight: 'bold' }}
               className="nav-link"
-              to="/Login"
+              to="/login"
             >
               Login
+            </NavLink>
+          </li>
+          <li className="nav-item dropdown">
+            <NavLink
+              activeClassName="activeNavItem"
+              activeStyle={{ fontWeight: 'bold' }}
+              className="nav-link"
+              to="/profile"
+            >
+              Profile
             </NavLink>
           </li>
         </ul>

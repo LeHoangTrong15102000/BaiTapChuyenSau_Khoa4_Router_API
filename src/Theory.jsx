@@ -33,6 +33,20 @@
  *      + Thong thường thì trên trang Detail ko có nút click vào tại vì nó phải kèm theo id thì id thường sẽ đính kèm theo những cái item
  *
  *  - Props location là gì
- *
+ *      - Location cũng cung cấp cho chúng ta những thuộc tính như các thuộc tính đằng trước như là : hash, pathName, search, state
+ * 
+ * 
+ *  - Props Redirect là gì
+ *      - Component Redirect được cung cấp bởi react-router-dom hỗ trợ ta điều hướng từ path này sang path khác
+ *      - Khi nội dung component gặp đối tượng component <Redirect/> thì sẽ chuyển hướng về path tương ứng.
+ *      - Cái này thường hay gắn vào điều kiện if else khi mà ta Render ra 
+ *  
+ * 
+ *  - Props Promt là gì
+ *      - Component  Promt cho phép người dùng xác định trạng thái cho phép người rời khỏi trang hay không. Nói chung là nó cảnh báo chúng ta là có muốn chuyển trang khác hay không
+ *      -
+ *      - Thuộc tính:
+ *          + when: trả về giá trị true hộp thoại hiển thị lên ngược lại false không hiển thị
+ *          + Message: hộp thoại chứa nội dung hiển thị
  *
  */
