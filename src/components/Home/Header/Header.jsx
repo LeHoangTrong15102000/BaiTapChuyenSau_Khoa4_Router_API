@@ -51,6 +51,16 @@ const Header = () => {
               Contact
             </NavLink>
           </li>
+          <li className="nav-item dropdown">
+            <NavLink
+              activeClassName="activeNavItem"
+              activeStyle={{ fontWeight: 'bold' }}
+              className="nav-link"
+              to="/Login"
+            >
+              Login
+            </NavLink>
+          </li>
         </ul>
         <form className="form-inline my-2 my-lg-0">
           <input
