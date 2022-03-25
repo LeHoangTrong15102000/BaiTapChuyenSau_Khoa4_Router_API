@@ -59,3 +59,5 @@
  *
  * - Redux thunk giúp chúng ta xử lý trước khi đưa nó lên Reducer
  */
+
+// ************************************************************ Không nên dùng Jquery cho React

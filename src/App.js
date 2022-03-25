@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 // import Example from './ReactRouter/Example';
 import {
   BrowserRouter,
@@ -6,18 +6,18 @@ import {
   Route,
   Routes,
   Switch,
-} from 'react-router-dom';
-import Home from './pages/Home/Home';
-import About from './pages/About/About';
-import Contact from './pages/Contact/Contact';
-import Header from './components/Home/Header/Header';
-import Login from './pages/Login/Login';
-import Detail from './pages/Detail/Detail';
-import PageNotFound from './pages/PageNotFound/PageNotFound';
-import Profile from './pages/Profile/Profile';
-import TodoListRFC from './pages/TodoList/TodoListRFC';
-import TodoList from './pages/TodoList/TodoList';
-import TodoListRedux from './pages/TodoList/TodoListRedux';
+} from "react-router-dom";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import Contact from "./pages/Contact/Contact";
+import Header from "./components/Home/Header/Header";
+import Login from "./pages/Login/Login";
+import Detail from "./pages/Detail/Detail";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
+import Profile from "./pages/Profile/Profile";
+import TodoListRFC from "./pages/TodoList/TodoListRFC";
+import TodoList from "./pages/TodoList/TodoList";
+import TodoListRedux from "./pages/TodoList/TodoListRedux";
 
 function App() {
   return (
