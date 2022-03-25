@@ -34,14 +34,14 @@
  *
  *  - Props location là gì
  *      - Location cũng cung cấp cho chúng ta những thuộc tính như các thuộc tính đằng trước như là : hash, pathName, search, state
- * 
- * 
+ *
+ *
  *  - Props Redirect là gì
  *      - Component Redirect được cung cấp bởi react-router-dom hỗ trợ ta điều hướng từ path này sang path khác
  *      - Khi nội dung component gặp đối tượng component <Redirect/> thì sẽ chuyển hướng về path tương ứng.
- *      - Cái này thường hay gắn vào điều kiện if else khi mà ta Render ra 
- *  
- * 
+ *      - Cái này thường hay gắn vào điều kiện if else khi mà ta Render ra
+ *
+ *
  *  - Props Promt là gì
  *      - Component  Promt cho phép người dùng xác định trạng thái cho phép người rời khỏi trang hay không. Nói chung là nó cảnh báo chúng ta là có muốn chuyển trang khác hay không
  *      -
@@ -49,4 +49,13 @@
  *          + when: trả về giá trị true hộp thoại hiển thị lên ngược lại false không hiển thị
  *          + Message: hộp thoại chứa nội dung hiển thị
  *
+ */
+
+// *********************************************************** Sẽ tìm hiểu về phần kiến thức mới là dispatch cái action là function
+/**
+ * 1. Khi ta dispatch 1 action nhưng ta cần xử lý 1 công việc nào đó rồi mới đưa dữ liệu đó lên reducer thì ta sử dụng function
+ * 2. Hoặc khi ta dispatch 1 action nhưng muốn kèm theo gọi logic các action khác. Ví dụ: dispatch chức năng thêm sinh viên đồng thời gọi lại logic của action get sinh viên thì ta sẽ dùng đến dispatch function
+ *    + Redux không hỗ trợ chúng ta dispatch cái action trả về là một cái function
+ *
+ * - Redux thunk giúp chúng ta xử lý trước khi đưa nó lên Reducer
  */

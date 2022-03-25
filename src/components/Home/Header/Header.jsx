@@ -90,6 +90,9 @@ const Header = () => {
               <NavLink className="dropdown-item" to="/todolistrcc">
                 Todo List RCC
               </NavLink>
+              <NavLink className="dropdown-item" to="/todolistredux">
+                Todo List Redux
+              </NavLink>
             </div>
           </li>
         </ul>
