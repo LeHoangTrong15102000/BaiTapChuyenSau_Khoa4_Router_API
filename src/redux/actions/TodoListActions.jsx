@@ -7,64 +7,66 @@ import axios from 'axios';
 export const getTaskListAPI = () => {
   // Thì thằng middleWare trả về cho chúng ta một cái function
   // Tiền xử lý dữ liệu sau đó xử lý function
-  return (dispatch) => {
+
+  // Nên dùng async await để xử lý đối với gọi API
+  return async (dispatch) => {
     // cái function này nhận sau khi tham số dispatch của component gọi lên
     // Lấy dữ liệu truyền xuống taskList
-    let promise = axios({
-      url: 'http://svcy.myclass.vn/api/ToDoList/GetAllTask',
-      method: 'GET',
-    });
 
-    // Nếu mà thành công thì làm gì đó
-    promise.then((result) => {
-      alert('Thành công');
-      console.log(result.data);
-      // Nếu gọi API set lại kết quả thành công thì render lại giao diện của chúng ta
-
-      // setState({
-      //   ...state,
-      //   taskList: result.data, // thì cái mảng rỗng nó chỉ thêm taskList vào nữa thôi là được
-      // });
-
-      // sau khi lấy dữ liệu từ backEnd về thì dispatch dữ liệu lên Reducer
-      // Những action dispatch trực tiếp lên Reducer thì nó có type
-      dispatch({
-        type: GET_TASK_API,
-        taskList: result.data,
+    // API quy định status code 200 là thành công
+    try {
+      // ...rest lấy các phần tử còn lại của thuộc tính await
+      let { data, status, ...rest } = await axios({
+        url: 'http://svcy.myclass.vn/api/ToDoList/GetAllTask',
+        method: 'GET',
       });
-    });
-    promise.catch((err) => {
+      if (status === 200) {
+        dispatch({
+          type: GET_TASK_API,
+          taskList: data,
+        });
+      }
+    } catch (err) {
       console.log(err.response.data);
-    });
+    }
   };
 };
 
 // addTask thì nó sẽ truyền vào cái taskName mới
 export const addTaskAPI = (taskName) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     // thằng dispatch này có được là từ thz useDispatch của ReduxThunk nên nó mới trả  ra tham số là dispatch của chúng ta, Nếu ko dùng dispatch mà gọi hàm bình thường thì nó ko tự load lại trang cho chúng ta.
     // Xử lý trước khi dispatch lên Redux
-    let promise = axios({
-      url: 'http://svcy.myclass.vn/api/ToDoList/AddTask',
-      method: 'POST', // với phương thúc là post thì cũng phải cần thêm cho nó cái data nữa
-      data: { taskName }, // Gửi lên cho nó một cái object mà bên backEnd cung cấp, phải viết đúng định dạng mà backEnd cung cấp
-    });
+    try {
+      // Phải có await thì mấy đoạn code khác mới đợi thằng await được ko thì vừa chạy nó sẽ chạy các đoạn code phía dưới
+      let { data, status } = await axios({
+        url: 'http://svcy.myclass.vn/api/ToDoList/AddTask',
+        method: 'POST', // với phương thúc là post thì cũng phải cần thêm cho nó cái data nữa
+        data: { taskName: taskName }, // Gửi lên cho nó một cái object mà bên backEnd cung cấp, phải viết đúng định dạng mà backEnd cung cấp
+      });
+
+      if (status === 200) {
+        dispatch(getTaskListAPI());
+      }
+    } catch (error) {
+      console.log(error.response.data);
+    }
 
     // Xử lý thành công
-    promise.then((result) => {
-      console.log(result.data);
+    // promise.then((result) => {
+    //   console.log(result.data);
 
-      // Mỗi lần thêm task mới vào thì load lại tất cả các task để người dùng có thể thấy được
-      // request API lần nữa lấy những cái task mới về
+    //   // Mỗi lần thêm task mới vào thì load lại tất cả các task để người dùng có thể thấy được
+    //   // request API lần nữa lấy những cái task mới về
 
-      // Nếu xử lý dữ liệu thành công thì dispatch nó lên Redux
-      dispatch(getTaskListAPI()); // cái dispatch tham số ở đây cũng giống như useDispatch
-    });
+    //   // Nếu xử lý dữ liệu thành công thì dispatch nó lên Redux
+    //   ; // cái dispatch tham số ở đây cũng giống như useDispatch
+    // });
 
-    // Xử lý thất bại
-    promise.catch((errors) => {
-      alert(errors.response.data);
-    });
+    // // Xử lý thất bại
+    // promise.catch((errors) => {
+    //   alert(errors.response.data);
+    // });
   };
 };
 
