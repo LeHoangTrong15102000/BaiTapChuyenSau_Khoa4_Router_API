@@ -9,7 +9,7 @@ export default (state = stateDefault, action) => {
   switch (action.type) {
     case GET_TASK_API: {
       // thì nó lấy state.taskList = action.taskList
-      state.taskList = action.taskList;
+      state.taskList = action.taskList; // Do trên đây có gọi action.taskList
       return { ...state };
     }
     default:

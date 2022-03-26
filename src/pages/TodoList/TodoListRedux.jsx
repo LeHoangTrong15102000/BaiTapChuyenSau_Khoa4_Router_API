@@ -2,13 +2,20 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { GET_TASK_API } from '../../redux/constants/TodoListTypes';
+import {
+  addTaskAPI,
+  deleteTaskAPI,
+  doneTaskAPI,
+  getTaskListAPI,
+  rejectTaskAPI,
+} from '../../redux/actions/TodoListActions';
 
 const TodoListRedux = (props) => {
   // lấy taskList từ Redux
   const { taskList } = useSelector((state) => state.TodoListReducer);
 
   // dispatch API lên store
-  const dispatchAPI = useDispatch();
+  const dispatch = useDispatch();
 
   let [state, setState] = useState({
     values: {
@@ -24,32 +31,8 @@ const TodoListRedux = (props) => {
   // Vì vậy các action lần này là hành động có nghiệp vụ xử lý, chứ không đơn thuần là cái action mà chúng ta chỉ xử lý bằng tay
   // Dùng cái action có nhiệm gọi API và cuối cùng nó sẽ dispatch lên store của Redux, cái action hành động sẽ trả về cho mình một cái function chứ không phải là một cái object nữa
   const getTaskList = () => {
-    // Lấy dữ liệu truyền xuống taskList
-    let promise = axios({
-      url: 'http://svcy.myclass.vn/api/ToDoList/GetAllTask',
-      method: 'GET',
-    });
-
-    // Nếu mà thành công thì làm gì đó
-    promise.then((result) => {
-      alert('Thành công');
-      console.log(result.data);
-      // Nếu gọi API set lại kết quả thành công thì render lại giao diện của chúng ta
-
-      // setState({
-      //   ...state,
-      //   taskList: result.data, // thì cái mảng rỗng nó chỉ thêm taskList vào nữa thôi là được
-      // });
-
-      // sau khi lấy dữ liệu từ backEnd về thì dispatch dữ liệu lên Reducer
-      dispatchAPI({
-        type: GET_TASK_API,
-        taskList: result.data,
-      });
-    });
-    promise.catch((err) => {
-      console.log(err.response.data);
-    });
+    // Đã dọn code qua Redux lưu trữ, nên tại đây chỉ cần dispatch lên Reducer
+    dispatch(getTaskListAPI());
   };
 
   const handleChange = (event) => {
@@ -154,84 +137,22 @@ const TodoListRedux = (props) => {
     event.preventDefault(); // Ngăn chặn việc load lại trang của sự kiện.
     console.log(state.values.taskName);
 
-    // Đưa dữ liệu lên server
-    let promise = axios({
-      url: 'http://svcy.myclass.vn/api/ToDoList/AddTask',
-      method: 'POST', // với phương thúc là post thì cũng phải cần thêm cho nó cái data nữa
-      data: { taskName: state.values.taskName }, // Gửi lên cho nó một cái object mà bên backEnd cung cấp, phải viết đúng định dạng mà backEnd cung cấp
-    });
-
-    // Xử lý thành công
-    promise.then((result) => {
-      console.log(result.data);
-
-      // Mỗi lần thêm task mới vào thì load lại tất cả các task để người dùng có thể thấy được
-      // request API lần nữa lấy những cái task mới về
-      getTaskList();
-    });
-
-    // Xử lý thất bại
-    promise.catch((errors) => {
-      alert(errors.response.data);
-    });
+    // Xử lý nhận dữ liệu từ người dùng nhập vào => gọi actions addTaskAPI()
+    dispatch(addTaskAPI(state.values.taskName));
   };
 
   const deleteTaskName = (taskName) => {
-    let promise = axios({
-      // Truyền vào taskName
-      url: `http://svcy.myclass.vn/api/ToDoList/deleteTask?taskName=${taskName}`,
-      method: 'DELETE',
-    });
-
-    // Nếu thành công thì
-    promise.then((result) => {
-      alert(result.data);
-      // sau khi xóa xong gọi lại hàm getTaskList
-      getTaskList();
-    });
-
-    promise.catch((errors) => {
-      alert(errors.response.data); //Có trả về response không thì bên phía backEnd quy định, Nên phải trao đổi với backEnd
-    });
+    dispatch(deleteTaskAPI(taskName));
   };
   // Button mà không để type là button thì nó sẽ hiểu là type là submit
   // Xử lý hàm DONE task
   const doneTaskName = (taskName) => {
-    // put đúng chuẩn thì truyền qua url hoặc object
-    // Thì ở đây ko cần phải truyền dữ liệu gì lên chỉ cần thay đổi trạng thái của taskName
-    let promise = axios({
-      url: `http://svcy.myclass.vn/api/ToDoList/doneTask?taskName=${taskName}`,
-      method: 'PUT',
-    });
-    // Xử lý thành công
-    promise.then((result) => {
-      alert(result.data);
-      getTaskList();
-    });
-
-    // Xử lý thất bại
-    promise.catch((errors) => {
-      alert(errors.response.data);
-    });
+    dispatch(doneTaskAPI(taskName));
   };
 
   // xử lý hàm undo cho taskName
   const rejectTaskName = (taskName) => {
-    let promise = axios({
-      url: `http://svcy.myclass.vn/api/ToDoList/rejectTask?taskName=${taskName}`,
-      method: 'PUT',
-    });
-
-    // Thành công
-    promise.then((res) => {
-      alert(res.data);
-      getTaskList();
-    });
-
-    // thất bại
-    promise.catch((err) => {
-      alert(err.response.data);
-    });
+    dispatch(rejectTaskAPI(taskName));
   };
 
   return (

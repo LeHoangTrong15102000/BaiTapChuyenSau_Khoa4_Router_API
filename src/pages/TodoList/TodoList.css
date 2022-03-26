@@ -215,6 +215,7 @@ span.toggle-btn:hover {
 /* Todo list */
 ul.todo {
   list-style: none;
+  padding-left: 0rem;
 }
 ul.todo li {
   display: flex;

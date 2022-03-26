@@ -12,3 +12,5 @@
 // ********************************************************** Bài hôm sau thực hiện todoList với Redux
 
 // ************************************************************ Tuy nhiên để dispatch một cái function (xử lý 1 cái gì đó trước sau đó mới dispatch lên Reducer) nó thuộc về kiến thức cho nên ta sẽ tìm hiểu về kiến thức này
+
+// ************************************************************** Ở video sau sẽ học về câu lệnh async await và try catch
