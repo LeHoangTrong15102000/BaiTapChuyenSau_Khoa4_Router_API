@@ -72,24 +72,20 @@ export const addTaskAPI = (taskName) => {
 
 // Xử lý done task
 export const doneTaskAPI = (taskName) => {
-  return (dispatch) => {
+  return async (dispatch) => {
     // put đúng chuẩn thì truyền qua url hoặc object
     // Thì ở đây ko cần phải truyền dữ liệu gì lên chỉ cần thay đổi trạng thái của taskName
-    let promise = axios({
-      url: `http://svcy.myclass.vn/api/ToDoList/doneTask?taskName=${taskName}`,
-      method: 'PUT',
-    });
-    // Xử lý thành công
-    promise.then((result) => {
-      alert(result.data);
-      // xử lý sau khi dispatch thành công
-      dispatch(getTaskListAPI(taskName));
-    });
-
-    // Xử lý thất bại
-    promise.catch((errors) => {
-      alert(errors.response.data);
-    });
+    try {
+      let {data, status } = await axios({
+        url: `http://svcy.myclass.vn/api/ToDoList/doneTask?taskName=${taskName}`,
+        method: 'PUT',
+      });
+      if (status === 200) {
+        dispatch(getTaskListAPI(taskName));
+      }
+    } catch (error) {
+      console.log(error.response.data)
+    }
   };
 };
 
@@ -97,44 +93,39 @@ export const doneTaskAPI = (taskName) => {
 export const deleteTaskAPI = (taskName) => {
   // function này là do redux thunk trả ra cho chúng ta
   // Những action dispatch thông qua redux thunk thì nó ko có type mà nó return về function
-  return (dispatch) => {
-    let promise = axios({
-      // Truyền vào taskName
-      url: `http://svcy.myclass.vn/api/ToDoList/deleteTask?taskName=${taskName}`,
-      method: 'DELETE',
-    });
+  return async (dispatch) => {
+    try {
+      let {data , status} = await axios({
+        // Truyền vào taskName
+        url: `http://svcy.myclass.vn/api/ToDoList/deleteTask?taskName=${taskName}`,
+        method: 'DELETE',
+      });
+      if (status === 200) {
+        dispatch(getTaskListAPI(taskName));
+      }
+    } catch (error) {
+      console.log(error.response.data)
+    }
 
-    // Nếu thành công thì
-    promise.then((result) => {
-      alert(result.data);
-      // sau khi thực hiện delete API gọi lại phương thức dispatchAction getTaskListApi để load lại task
-      dispatch(getTaskListAPI(taskName)); //
-    });
-
-    promise.catch((errors) => {
-      alert(errors.response.data); //Có trả về response không thì bên phía backEnd quy định, Nên phải trao đổi với backEnd
-    });
+   
   };
 };
 
 // Xử lý reject task
 export const rejectTaskAPI = (taskName) => {
-  return (dispatch) => {
-    let promise = axios({
-      url: `http://svcy.myclass.vn/api/ToDoList/rejectTask?taskName=${taskName}`,
-      method: 'PUT',
-    });
-
-    // Thành công
-    promise.then((res) => {
-      alert(res.data);
-      // Xử lý sau khi dispatch thành công load lại API
-      dispatch(getTaskListAPI(taskName));
-    });
-
-    // thất bại
-    promise.catch((err) => {
-      alert(err.response.data);
-    });
+  return async (dispatch) => {
+     try {
+      let {data , status} = await axios({
+        url: `http://svcy.myclass.vn/api/ToDoList/rejectTask?taskName=${taskName}`,
+        method: 'PUT',
+      });
+  
+      if (status === 200) {
+        dispatch(getTaskListAPI(taskName));
+      }
+     } catch (error) {
+        console.log(error.response.data)
+     }
   };
 };
+  
