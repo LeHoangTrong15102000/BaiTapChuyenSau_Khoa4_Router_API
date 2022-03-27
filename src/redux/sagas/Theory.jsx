@@ -25,3 +25,9 @@
 // ************************************************ Redux sagas
 // Nó sẽ tách ra action bình thường và action sagas(là những action dispatch lên Reducer 1 cái function)
 // Thì những action nào liên quan đến function thì được khai báo trong Saga, còn những action bình thường thì được khai báo trong actions bình thường của Redux
+
+// *****************************************************
+/**
+ * Trong Saga thì nó sẽ có một số phương thức theo dõi action
+ * Dùng saga kết nối với API lấy 1 vài thứ cần thiết về
+ */

@@ -76,7 +76,7 @@ export const doneTaskAPI = (taskName) => {
     // put đúng chuẩn thì truyền qua url hoặc object
     // Thì ở đây ko cần phải truyền dữ liệu gì lên chỉ cần thay đổi trạng thái của taskName
     try {
-      let {data, status } = await axios({
+      let { data, status } = await axios({
         url: `http://svcy.myclass.vn/api/ToDoList/doneTask?taskName=${taskName}`,
         method: 'PUT',
       });
@@ -84,7 +84,7 @@ export const doneTaskAPI = (taskName) => {
         dispatch(getTaskListAPI(taskName));
       }
     } catch (error) {
-      console.log(error.response.data)
+      console.log(error.response.data);
     }
   };
 };
@@ -95,7 +95,7 @@ export const deleteTaskAPI = (taskName) => {
   // Những action dispatch thông qua redux thunk thì nó ko có type mà nó return về function
   return async (dispatch) => {
     try {
-      let {data , status} = await axios({
+      let { data, status } = await axios({
         // Truyền vào taskName
         url: `http://svcy.myclass.vn/api/ToDoList/deleteTask?taskName=${taskName}`,
         method: 'DELETE',
@@ -104,28 +104,25 @@ export const deleteTaskAPI = (taskName) => {
         dispatch(getTaskListAPI(taskName));
       }
     } catch (error) {
-      console.log(error.response.data)
+      console.log(error.response.data);
     }
-
-   
   };
 };
 
 // Xử lý reject task
 export const rejectTaskAPI = (taskName) => {
   return async (dispatch) => {
-     try {
-      let {data , status} = await axios({
+    try {
+      let { data, status } = await axios({
         url: `http://svcy.myclass.vn/api/ToDoList/rejectTask?taskName=${taskName}`,
         method: 'PUT',
       });
-  
+
       if (status === 200) {
         dispatch(getTaskListAPI(taskName));
       }
-     } catch (error) {
-        console.log(error.response.data)
-     }
+    } catch (error) {
+      console.log(error.response.data);
+    }
   };
 };
-  
