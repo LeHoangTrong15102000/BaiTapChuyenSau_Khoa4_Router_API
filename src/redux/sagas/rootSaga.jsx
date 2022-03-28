@@ -7,12 +7,12 @@ import {
   delay,
   call,
   put,
-  all
-} from "redux-saga/effects";
-import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
-import { GET_TASK_API } from "../constants/TodoListTypes";
-import * as TodoListSaga from './TodoListSagaAction'
+  all,
+} from 'redux-saga/effects';
+import { useSelector, useDispatch } from 'react-redux';
+import axios from 'axios';
+import { GET_TASK_API } from '../constants/TodoListTypes';
+import * as TodoListSaga from './TodoListSagaAction';
 // Bây giờ tìm hiểu saga trước rồi mới lên đọc tài liệu hiêu sâu Saga nó định nghĩa cái gì
 
 /**
@@ -36,8 +36,8 @@ export function* rootSaga() {
   yield all([
     // Nghiệp vụ theo dõi các action saga todoList
     // Sẽ dùng cái hàm tổng để gọi tới từng takeLatest (nghiệp vụ của function)
-    TodoListSaga.followActionGetTaskApi
-  ])
+    TodoListSaga.followActionGetTaskApi(),
+  ]);
 }
 
 // Mặc định ban đầu những thằng fork() nó sẽ chạy hết tuy nhiên nó sẽ bị chặn lại bởi take() khi nào take được gọi thì đoạn code trong đó mới được thực thi

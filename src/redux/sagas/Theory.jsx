@@ -43,6 +43,14 @@
  */
 // Phải thực hành đi thưc hành lại thì chúng ta mới có thể nhớ được
 
-
 // ***************************************************** Tổ chức lại saga cho hợp lí với các nghiệp vụ của hệ thống
 // Actions thường và actions saga sẽ phân file riêng và đặt tên riêng
+/**
+ * Hướng dẫn tối ưu thêm nữa, và những cái tham số set cứng, những tham số do backEnd qua định thì thông thường những thông số do backEnd quy định để config hệ thống
+ * Chúng ta không đặt chung ở actions của saga, lỡ mà thằng backEnd nó thay đổi domain
+ * Thì ở đây chung ta sẽ tạo ra 1 file là constans trong folder utils đặt tên là DOMAIN(quẳn lí những tham số của hệ thống) trong constants sẽ quản lí những tham số dùng chung
+ */
+/**
+ * Trong folder service quản lí nhứng cái API, folder service là nơi tương tác với backEnd
+ * Thay vì set cứng hàm gọi API bên trong action của saga thì chúng ta sẽ viêt nó thành cái hàm ở folder service để gọi nó qua lại action của saga
+ */
