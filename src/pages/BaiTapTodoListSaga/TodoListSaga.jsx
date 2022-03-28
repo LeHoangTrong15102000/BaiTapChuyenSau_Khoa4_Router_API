@@ -20,7 +20,7 @@ const TodoListSaga = (props) => {
     },
   });
 
-  let dispatchApi = useDispatch()
+  let dispatchApi = useDispatch();
 
   // Viết hàm getTask lấy dữ liệu từ backEnd xuống
   const getTaskList = () => {};
@@ -34,7 +34,8 @@ const TodoListSaga = (props) => {
 
     let newErrors = { ...state.errors }; // tạo ra một lỗi mới\
     // Validation chỉ cho nhập vào là chữ
-    let regexString = /^[a-z A-Z]+$/;
+    let regexString =
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     // Nếu chuỗi đầu vào hợp lệ thì cho thực hiện
     if (!regexString.test(value) || value.trim() === ' ') {
       // Kiểm tra cái value nếu nó không hợp lệ
@@ -133,12 +134,17 @@ const TodoListSaga = (props) => {
 
   return (
     <div className="card">
-      <button className="btn btn-success" onClick={() => {
-        // Dispatch 1 cái action có type đúng với thằng mình đã định nghĩa
-        dispatchApi({
-          type: 'getTaskApiAction'
-        })
-      }}>Dispatch action saga getTaskAPI</button>
+      <button
+        className="btn btn-success"
+        onClick={() => {
+          // Dispatch 1 cái action có type đúng với thằng mình đã định nghĩa
+          dispatchApi({
+            type: 'getTaskApiAction',
+          });
+        }}
+      >
+        Dispatch action saga getTaskAPI
+      </button>
       <div className="card__header">
         <img src="./img/X2oObC4.png" />
       </div>

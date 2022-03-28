@@ -9,6 +9,7 @@
  *      + Yield(): Có nghĩa là chạy tuần tự khi nào trả ra kết quả thì mới thực thi tiếp.
  *      + Select(): Chạy một selector function để lấy data từ state
  *      + All(): Gọi nhiều saga chạy cùng lúc
+ *      + Call(): Thực hiện hàm gọi api ->trả về promise và blocking(sẽ không thực hiện những thằng sau nếu mà nó chưa hoàn tất)
  */
 
 // *********************************************** Khái niệm về Generator function
@@ -29,5 +30,14 @@
 // *****************************************************
 /**
  * Trong Saga thì nó sẽ có một số phương thức theo dõi action
- * Dùng saga kết nối với API lấy 1 vài thứ cần thiết về
+ * Dùng saga kết nối với API lấy 1 vài thứ cần thiết về`
+ */
+
+// ******************************************************* TakeEvery takeLastest
+/**
+ * Cung cấp cho chúng ta phương thức delay() để trì hoãn action được thực thi
+ * TakeLastest sẽ lấy cái dispatch cuối cùng mà chúng ta dispatch lên reducer
+ *
+ * Bây giờ sẽ dùng cái action này để lấy taskList từ APi về và hiển thị lên giao diện thì sẽ làm như thế nào
+ * Trong Redux Saga cung cấp cho chúng ta thêm thằng call() để thực hiện gọi API từ serve về
  */
