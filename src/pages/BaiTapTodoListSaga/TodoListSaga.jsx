@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const TodoListSaga = (props) => {
   let [state, setState] = useState({
-    taskList: [],
+    
     values: {
       taskName: '',
     },
@@ -19,11 +19,22 @@ const TodoListSaga = (props) => {
       taskName: '',
     },
   });
+  
+  // Dùng useSelector để lấy giá trị từ Redux về
+  const { taskList } = useSelector(state => state.TodoListReducer)
 
-  let dispatchApi = useDispatch();
+  // Sử dụng useDispatch để dispatch những action lên Reducer
+  const dispatch = useDispatch();
 
   // Viết hàm getTask lấy dữ liệu từ backEnd xuống
-  const getTaskList = () => {};
+  const getTaskList = () => {
+    // dispatch đúng cái Type của action là được (tên action Saga)
+    // dispatch action saga
+    dispatch({
+      type: 'getTaskApiAction',// phải viết chính xác cái tên thì nó mới lên Reducer và gọi APi ra
+      data: 'Trong'
+    })
+  };
 
   const handleChange = (event) => {
     let { value, name } = event.target;
@@ -49,13 +60,18 @@ const TodoListSaga = (props) => {
     setState({ ...state, values: newValues, errors: newErrors }); // setState lại giá trị và lỗi
   };
 
+
+  // Tại đây sẽ băt sự kiện useEffect để dispatch cái action, chỉ cần truyền tên action đi thôi thì tự động nó sẽ nhảy vào cái action đó để thực thi
   useEffect(() => {
     // thằng Return này là của componentWillUnmount
+
+    // Gọi hàm getTaskList
+    getTaskList();
     return () => {};
   }, []);
 
   const renderTaskTodo = () => {
-    return state.taskList
+    return taskList
       .filter((item) => !item.status)
       .map((task, index) => {
         return (
@@ -90,7 +106,7 @@ const TodoListSaga = (props) => {
 
   // Từ state viết hàm render TaskCompleted
   const renderTaskCompleted = () => {
-    return state.taskList
+    return taskList
       .filter((item) => item.status)
       .map((task, index) => (
         <li key={index}>
@@ -133,20 +149,20 @@ const TodoListSaga = (props) => {
   const rejectTaskName = (taskName) => {};
 
   return (
-    <div className="card">
+    <div className="card"> 
       <button
         className="btn btn-success"
-        onClick={() => {
-          // Dispatch 1 cái action có type đúng với thằng mình đã định nghĩa
-          dispatchApi({
-            type: 'getTaskApiAction',
-          });
-        }}
+        // onClick={() => {
+        //   // Dispatch 1 cái action có type đúng với thằng mình đã định nghĩa
+        //   dispatch({
+        //     type:
+        //   });
+        // }}
       >
         Dispatch action saga getTaskAPI
       </button>
       <div className="card__header">
-        <img src="./img/X2oObC4.png" />
+        <img src="./img/X2oObC4.png" alt="Img123" />
       </div>
       {/* <h2>hello!</h2> */}
       <form className="card__body" onSubmit={addTask}>

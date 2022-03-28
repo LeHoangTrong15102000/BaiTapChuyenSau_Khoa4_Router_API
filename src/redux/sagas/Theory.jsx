@@ -33,7 +33,7 @@
  * Dùng saga kết nối với API lấy 1 vài thứ cần thiết về`
  */
 
-// ******************************************************* TakeEvery takeLastest
+// ******************************************************* takeEvery takeLatest
 /**
  * Cung cấp cho chúng ta phương thức delay() để trì hoãn action được thực thi
  * TakeLastest sẽ lấy cái dispatch cuối cùng mà chúng ta dispatch lên reducer
@@ -41,3 +41,8 @@
  * Bây giờ sẽ dùng cái action này để lấy taskList từ APi về và hiển thị lên giao diện thì sẽ làm như thế nào
  * Trong Redux Saga cung cấp cho chúng ta thêm thằng call() để thực hiện gọi API từ serve về
  */
+// Phải thực hành đi thưc hành lại thì chúng ta mới có thể nhớ được
+
+
+// ***************************************************** Tổ chức lại saga cho hợp lí với các nghiệp vụ của hệ thống
+// Actions thường và actions saga sẽ phân file riêng và đặt tên riêng
