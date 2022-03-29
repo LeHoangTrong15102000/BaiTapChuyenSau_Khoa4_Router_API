@@ -54,3 +54,9 @@
  * Trong folder service quản lí nhứng cái API, folder service là nơi tương tác với backEnd
  * Thay vì set cứng hàm gọi API bên trong action của saga thì chúng ta sẽ viêt nó thành cái hàm ở folder service để gọi nó qua lại action của saga
  */
+
+// ***************************************************** Thực hiện chức năng loading cho web của chúng ta
+/**
+ * Khi chúng ta lấy data về thì nó mới bắt đầu hiển thị
+ * Tạo cho nó 1 cái state để quản lí trạng thái của nó
+ */

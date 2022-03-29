@@ -19,11 +19,13 @@ import TodoListRFC from './pages/TodoList/TodoListRFC';
 import TodoList from './pages/TodoList/TodoList';
 import TodoListRedux from './pages/TodoList/TodoListRedux';
 import TodoListSaga from './pages/BaiTapTodoListSaga/TodoListSaga';
+import LoadingComponent from './components/GlobalSetting/LoadingComponent/LoadingComponent';
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
+      <LoadingComponent />
       <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/about" component={About} />
