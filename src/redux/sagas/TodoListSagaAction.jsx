@@ -34,6 +34,18 @@ function* getTaskApiAction(action) {
   // Nó như async await nê phải dùng hàm call mới được
   // Nó sẽ nhận vào một cái hàm trả về promise
   // console.log('actionSaga', action);
+
+
+  // Put action để hiển thị loading(thì phương thức put giống như dispatch)
+  yield put({
+    // Put có thể dispatch cả action saga và action thường
+    type: 'DISPLAY_LOADING',// Ban đầu là loading dữ liệu
+  })
+
+  // Thì sử dung hàm delay để kéo dài quá trình loading dữ liệu
+  yield delay(800)
+  
+  // Sau khi lấy dữ liệu về
   let { data, status } = yield call(todoListService.getTaskApi); // 1 cái hàm trả về promise`, tại vì thằng call nhận vào một function trả về giá trị promise
 
   // Sau khi lấy giá trị thành công dung put (giống dispatch bên thunk)
@@ -42,6 +54,12 @@ function* getTaskApiAction(action) {
     type: GET_TASK_API,
     taskList: data,
   });
+
+
+  // Tiếp đến là ẩn loading đi
+  yield put({
+    type: 'HIDE_LOADING'
+  })
 
   // console.log('result', data);
 }

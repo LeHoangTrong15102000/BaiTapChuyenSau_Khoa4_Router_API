@@ -59,4 +59,10 @@
 /**
  * Khi chúng ta lấy data về thì nó mới bắt đầu hiển thị
  * Tạo cho nó 1 cái state để quản lí trạng thái của nó
+ * 
+ * Study: 
+ *  + Khi bắt đầu lấy data về thì nó mới hiển thị , khi data load về xong thì nó sẽ tắt đi
+ *  + Dùng redux saga để quản lí trạng thái loading của dữ liệu LoadingComponent
+ *  + Trước khi nó vào saga thì nó phải tải dữ liệu từ phía backEnd về
+ *      - Dùng put() để dispatch cái loading
  */

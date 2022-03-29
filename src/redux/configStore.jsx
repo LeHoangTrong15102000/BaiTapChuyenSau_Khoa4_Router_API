@@ -1,6 +1,7 @@
 // Chứa cấu hình của RootReducer.
 import { applyMiddleware, combineReducers, createStore } from 'redux';
 import TodoListReducer from './reducers/TodoListReducer';
+import LoadingReducer from './reducers/LoadingReducer'
 import reduxThunk from 'redux-thunk';
 // middleware saga
 // Redux thunk chỉ cần import vào middleWare là được, còn ReduxSaga thì nó phải gọi một hàm thì nó mới tạo ra middleWare đó
@@ -17,6 +18,7 @@ const middleWareSaga = createMiddleWareSaga()
 const rootReducer = combineReducers({
   // Các Reducer được khai báo tại đây
   TodoListReducer,
+  LoadingReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(reduxThunk, middleWareSaga));// Sau khi gắn vào ApplyMiddleWare thì ta gọi hàm run() generator function
