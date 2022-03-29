@@ -58,7 +58,8 @@ function* getTaskApiAction(action) {
   try {
     // Thì sử dung hàm delay để kéo dài quá trình loading dữ liệu
 
-    let { data, status } = yield call(todoListService.getTaskApi); // 1 cái hàm trả về promise`, tại vì thằng call nhận vào một function trả về giá trị promise
+    // Trong nội dung của call nhận vào một function, function đó trả về một promise, nên giờ có thêm tham số taskName thì mình viết nó dưới dạng callBack(viết dưới dạng arrow function như các sự kiện gắn vào nút button)
+    let { data, status } = yield call(() => {return todoListService.getTaskApi()}); // 1 cái hàm trả về promise`, tại vì thằng call nhận vào một function trả về giá trị promise
 
     if (status === STATUS_CODE.SUCCESS) {
       yield put({
@@ -96,8 +97,30 @@ export function* followActionGetTaskApi() {
 function* addTaskApiAction(action) {
   // Khi mà dispatch lên thì nó sẽ gọi hàm ở đây thực thi
   // Gọi Api -> goi APi thì viêt bên folder service , để sau này dễ quản lí code hơn
+  yield put({
+    type: DISPLAY_LOADING,
+  })
+
+  yield delay(800)
+
+  try {
+    let { data , status } = yield call(todoListService.addTaskApi)
+
+    if (status === STATUS_CODE.SUCCESS) {
+      // Thành công thì dispatch API lên lại
+      yield put({
+        type: ADD_TASK_API
+      })
+    }
+  } catch(error) {
+    console.log('error')
+  }
   // Hiển thị loading
   // Thành công thì load lại task = cách gọi lai action saga getTaskApi
+
+  yield put({
+    type: HIDE_LOADING
+  })
 }
 
 export function* followActionAddTaskApi() {
