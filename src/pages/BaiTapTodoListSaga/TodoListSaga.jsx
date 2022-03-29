@@ -8,6 +8,10 @@ import React, {
 import './TodoList.css';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import {
+  ADD_TASK_API,
+  GET_TASKLIST_API,
+} from '../../redux/constants/TodoListTypes';
 
 const TodoListSaga = (props) => {
   let [state, setState] = useState({
@@ -30,7 +34,7 @@ const TodoListSaga = (props) => {
     // dispatch đúng cái Type của action là được (tên action Saga)
     // dispatch action saga
     dispatch({
-      type: 'getTaskApiAction', // phải viết chính xác cái tên thì nó mới lên Reducer và gọi APi ra
+      type: GET_TASKLIST_API, // phải viết chính xác cái tên thì nó mới lên Reducer và gọi APi ra
       data: 'Trong',
     });
   };
@@ -134,7 +138,14 @@ const TodoListSaga = (props) => {
   };
 
   // xử lý hàm addTask
-  const addTask = (event) => {};
+  const addTask = (event) => {
+    event.preventDefault();
+    // khi addTask thì gửi taskName lên, ở đây sẽ dispatch 1 cái action saga
+    dispatch({
+      // Khi ta dispatch lên thì trên saga nó sẽ lặng nghe sự kiện của chúng ta
+      type: ADD_TASK_API,
+    });
+  };
 
   const deleteTaskName = (taskName) => {};
   // Button mà không để type là button thì nó sẽ hiểu là type là submit
@@ -151,7 +162,7 @@ const TodoListSaga = (props) => {
         onClick={() => {
           // Dispatch 1 cái action có type đúng với thằng mình đã định nghĩa
           dispatch({
-            type: 'getTaskApiAction',
+            type: GET_TASKLIST_API,
           });
         }}
       >

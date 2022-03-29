@@ -7,7 +7,7 @@ const LoadingComponent = (props) => {
   // Nội dung sẽ là hiển thị ra tấm hình loading
 
   // Dùng Selector để lấy dữ liệu của thằng Loading về
-  let { isLoading } = useSelector(state => state.LoadingReducer)
+  let { isLoading } = useSelector((state) => state.LoadingReducer);
   if (isLoading) {
     return (
       <div className={styleLoading.bgLoading}>

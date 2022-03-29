@@ -37,6 +37,7 @@ export function* rootSaga() {
     // Nghiệp vụ theo dõi các action saga todoList
     // Sẽ dùng cái hàm tổng để gọi tới từng takeLatest (nghiệp vụ của function)
     TodoListSaga.followActionGetTaskApi(),
+    TodoListSaga.followActionAddTaskApi(),
   ]);
 }
 
