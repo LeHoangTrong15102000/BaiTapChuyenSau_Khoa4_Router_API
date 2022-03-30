@@ -141,7 +141,7 @@ export function* followActionAddTaskApi() {
 }
 
 /**
- * 29/3/2022 Trong viết chức năng doneTask
+ * 29/3/2022 Trong viết chức năng deleteTask
  */
 function* deleteTaskApiAction(action) {
   yield put({
@@ -176,8 +176,15 @@ export function* followActionDeleteTaskApi() {
 }
 
 /**
- * 29/3/2022 Trong viết chức năng deleteTask
+ * 29/3/2022 Trong viết chức năng doneTask
  */
+function* doneTaskApiAction(action) {
+
+}
+
+export function* followActionDoneTaskApi() {
+  yield takeLatest(DONE_TASK_API, doneTaskApiAction)
+}
 
 /**
  * 29/3/2022 Trong viết chức năng rejectTask

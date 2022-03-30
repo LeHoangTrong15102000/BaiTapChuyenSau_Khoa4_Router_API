@@ -9,6 +9,7 @@ export const getTaskListAPI = () => {
   // Tiền xử lý dữ liệu sau đó xử lý function
 
   // Nên dùng async await để xử lý đối với gọi API
+  // Sử dụng Redux thunk trong project này 
   return async (dispatch) => {
     // cái function này nhận sau khi tham số dispatch của component gọi lên
     // Lấy dữ liệu truyền xuống taskList

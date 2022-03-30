@@ -6,6 +6,9 @@ import { DOMAIN } from '../utils/constants/settingSystem';
 export class TodoListService {
   // eslint-disable-next-line no-useless-constructor
   constructor() {}
+
+
+  // Xử lý lấy dữ liệu Api từ BackEnd về
   getTaskApi = () => {
     return axios({
       url: `${DOMAIN}/ToDoList/GetAllTask`,
