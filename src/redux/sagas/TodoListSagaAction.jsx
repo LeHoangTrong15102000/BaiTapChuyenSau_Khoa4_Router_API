@@ -14,6 +14,9 @@ import {
   ADD_TASK_API,
   GET_TASKLIST_API,
   GET_TASK_API,
+  DELETE_TASK_API,
+  DONE_TASK_API,
+  REJECT_TASK_API,
 } from '../constants/TodoListTypes';
 import { todoListService } from '../../services/TodoListService';
 import { STATUS_CODE } from '../../utils/constants/settingSystem';
@@ -140,6 +143,37 @@ export function* followActionAddTaskApi() {
 /**
  * 29/3/2022 Trong viết chức năng doneTask
  */
+function* deleteTaskApiAction(action) {
+  yield put({
+    type: DISPLAY_LOADING,
+  });
+  yield delay(500);
+
+  let { taskName } = action;
+  try {
+    const { data, status } = yield call(() => {
+      return todoListService.deleteTaskApi(taskName);
+    });
+
+    if (status === STATUS_CODE.SUCCESS) {
+      // Thành công thì dispatch API lại để lấy về cái danh sach taskList với taskName vừa mới được thêm vào
+      yield put({
+        // Sau khi xóa yield put cload lại data cho chúng ta
+        type: GET_TASKLIST_API,
+      });
+    }
+  } catch (err) {
+    console.log('errors');
+  }
+
+  yield put({
+    type: HIDE_LOADING,
+  });
+}
+
+export function* followActionDeleteTaskApi() {
+  yield takeLatest(DELETE_TASK_API, deleteTaskApiAction);
+}
 
 /**
  * 29/3/2022 Trong viết chức năng deleteTask

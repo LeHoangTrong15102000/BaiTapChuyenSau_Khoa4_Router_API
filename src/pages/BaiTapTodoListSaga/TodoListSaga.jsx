@@ -10,6 +10,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   ADD_TASK_API,
+  DELETE_TASK_API,
   GET_TASKLIST_API,
 } from '../../redux/constants/TodoListTypes';
 
@@ -150,7 +151,15 @@ const TodoListSaga = (props) => {
     });
   };
 
-  const deleteTaskName = (taskName) => {};
+  // xử lý hàm deleteTask, dispatch lên reducer để xử lý
+  const deleteTaskName = (taskName) => {
+    // khi addTask thì gửi taskName lên, ở đây sẽ dispatch 1 cái action saga
+    dispatch({
+      // Khi ta dispatch lên thì trên saga nó sẽ lặng nghe sự kiện của chúng ta
+      type: DELETE_TASK_API, // phải viết đúng type của nó , thì trên reducer xem đúng type thì nó mới xử lý
+      taskName: taskName,
+    });
+  };
   // Button mà không để type là button thì nó sẽ hiểu là type là submit
   // Xử lý hàm DONE task
   const doneTaskName = (taskName) => {};

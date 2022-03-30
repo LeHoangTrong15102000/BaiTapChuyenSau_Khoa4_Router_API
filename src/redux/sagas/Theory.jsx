@@ -73,3 +73,6 @@
  *    -
  * + actions
  */
+
+// ********************************************** Nên đi từ file service kết nối với APi rồi đi vào các file của saga để xử lý
+// Sau  đó đưa vào rootSaga

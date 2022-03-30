@@ -23,32 +23,31 @@ export class TodoListService {
         taskName: taskName, // Truyền cái taskName mà bên backEnd cung cấp để dispatch lên
       },
     });
-       
   };
 
   // Xử lý hàm deleteTask
   deleteTaskApi = (taskName) => {
     return axios({
       url: `${DOMAIN}/ToDoList/deleteTask?taskName=${taskName}`,
-      method: 'DELETE'
-    })
-  }
+      method: 'DELETE',
+    });
+  };
 
   // Xử lý check done task
   doneTaskApi = (taskName) => {
     return axios({
       url: `${DOMAIN}/ToDoList/doneTask?taskName=${taskName}`,
-      method: 'PUT'
-    })
-  }
+      method: 'PUT',
+    });
+  };
 
   // Xử lý rejectTask
   rejectTasKApi = (taskName) => {
     return axios({
       url: `${DOMAIN}/ToDoList/rejectTask?taskName=${taskName}`,
-      method: 'PUT'
-    })
-  }
+      method: 'PUT',
+    });
+  };
 }
 
 // export 1 cái biến để gọi service này, export 1 cai class ra
