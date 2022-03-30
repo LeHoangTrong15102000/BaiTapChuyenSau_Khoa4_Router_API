@@ -20,11 +20,11 @@ export class TodoListService {
       method: 'POST',
       // Data gửi đi là object có modal là taskName
       data: {
-        taskName: taskName,// Truyền cái taskName mà bên backEnd cung cấp để dispatch lên
+        taskName: taskName, // Truyền cái taskName mà bên backEnd cung cấp để dispatch lên
       },
     });
   };
 }
 
 // export 1 cái biến để gọi service này, export 1 cai class ra
-export const todoListService = new TodoListService();// export ra để ở các file kết nối để dễ liên kết
+export const todoListService = new TodoListService(); // export ra để ở các file kết nối để dễ liên kết

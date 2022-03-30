@@ -144,6 +144,9 @@ const TodoListSaga = (props) => {
     dispatch({
       // Khi ta dispatch lên thì trên saga nó sẽ lặng nghe sự kiện của chúng ta
       type: ADD_TASK_API,
+      // phải thêm taskName ở dưới đây vào thì ở trên nó mới nhận được và xử lý
+      taskName: state.values.taskName,
+      // gọi lên trên đó thì nó sẽ bóc tách ra taskName, sẽ có hàm theo dõi nó trên saga, Nếu dispatch đúng tên thì nó sẽ lặng nghe sự kiện
     });
   };
 
