@@ -11,7 +11,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
   ADD_TASK_API,
   DELETE_TASK_API,
+  DONE_TASK_API,
   GET_TASKLIST_API,
+  REJECT_TASK_API,
 } from '../../redux/constants/TodoListTypes';
 
 const TodoListSaga = (props) => {
@@ -153,7 +155,7 @@ const TodoListSaga = (props) => {
 
   // xử lý hàm deleteTask, dispatch lên reducer để xử lý
   const deleteTaskName = (taskName) => {
-    // khi addTask thì gửi taskName lên, ở đây sẽ dispatch 1 cái action saga
+    // khi deleteTask thì gửi taskName lên, ở đây sẽ dispatch 1 cái action saga
     dispatch({
       // Khi ta dispatch lên thì trên saga nó sẽ lặng nghe sự kiện của chúng ta
       type: DELETE_TASK_API, // phải viết đúng type của nó , thì trên reducer xem đúng type thì nó mới xử lý
@@ -162,10 +164,24 @@ const TodoListSaga = (props) => {
   };
   // Button mà không để type là button thì nó sẽ hiểu là type là submit
   // Xử lý hàm DONE task
-  const doneTaskName = (taskName) => {};
+  const doneTaskName = (taskName) => {
+     // khi deleteTask thì gửi taskName lên, ở đây sẽ dispatch 1 cái action saga
+     dispatch({
+      // Khi ta dispatch lên thì trên saga nó sẽ lặng nghe sự kiện của chúng ta
+      type: DONE_TASK_API, // phải viết đúng type của nó , thì trên reducer xem đúng type thì nó mới xử lý
+      taskName: taskName,
+    });
+  };
 
   // xử lý hàm undo cho taskName
-  const rejectTaskName = (taskName) => {};
+  const rejectTaskName = (taskName) => {
+     // khi deleteTask thì gửi taskName lên, ở đây sẽ dispatch 1 cái action saga
+     dispatch({
+      // Khi ta dispatch lên thì trên saga nó sẽ lặng nghe sự kiện của chúng ta
+      type: REJECT_TASK_API, // phải viết đúng type của nó , thì trên reducer xem đúng type thì nó mới xử lý
+      taskName: taskName,
+    });
+  };
 
   return (
     <div className="card">

@@ -45,7 +45,7 @@ export class TodoListService {
   };
 
   // Xử lý rejectTask
-  rejectTasKApi = (taskName) => {
+  rejectTaskApi = (taskName) => {
     return axios({
       url: `${DOMAIN}/ToDoList/rejectTask?taskName=${taskName}`,
       method: 'PUT',

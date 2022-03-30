@@ -179,7 +179,31 @@ export function* followActionDeleteTaskApi() {
  * 29/3/2022 Trong viết chức năng doneTask
  */
 function* doneTaskApiAction(action) {
-
+  // Sau khi đã gọi xong bên service thì chúng ta sẽ thực hiện tiếp bên đây
+  yield put({
+    type: DISPLAY_LOADING,
+  });
+  yield delay(500);
+  
+  let { taskName } = action
+  try {
+    const {data, status } = yield call(() => {
+      return todoListService.doneTaskApi(taskName)
+    })
+    // Sau khi lấy được APi rồi thì ta set lại
+    if (status === STATUS_CODE.SUCCESS) {
+      //set lại danh sách taskList
+      yield put({
+        type: GET_TASKLIST_API
+      })
+    }
+  } catch (error) {
+    console.log("error", error)
+  }
+  
+  yield put({
+    type: HIDE_LOADING
+  })
 }
 
 export function* followActionDoneTaskApi() {
@@ -189,3 +213,34 @@ export function* followActionDoneTaskApi() {
 /**
  * 29/3/2022 Trong viết chức năng rejectTask
  */
+function* rejectTaskApiAction(action) {
+  // Sau khi gọi xong bên service thì thực hiện tiếp bên đây
+  yield put({
+    type: DISPLAY_LOADING,
+  });
+  yield delay(500);
+
+  let { taskName } = action
+  try {
+    const { data , status } = yield call(() => {
+      return todoListService.rejectTaskApi(taskName)
+    })
+
+    if (status === STATUS_CODE.SUCCESS) {
+      yield put({
+        type: GET_TASKLIST_API
+      })
+    }
+  } catch (error) {
+    console.log("errors", error)
+  }
+
+  yield put({
+    type: HIDE_LOADING
+  })
+}
+
+export function* followActionRejectTaskApi() {
+  yield takeLatest(REJECT_TASK_API, rejectTaskApiAction)
+}
+ 

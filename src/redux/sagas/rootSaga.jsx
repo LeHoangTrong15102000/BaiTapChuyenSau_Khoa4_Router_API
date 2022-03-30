@@ -39,6 +39,8 @@ export function* rootSaga() {
     TodoListSaga.followActionGetTaskApi(),
     TodoListSaga.followActionAddTaskApi(),
     TodoListSaga.followActionDeleteTaskApi(),
+    TodoListSaga.followActionDoneTaskApi(),
+    TodoListSaga.followActionRejectTaskApi()
   ]);
 }
 
