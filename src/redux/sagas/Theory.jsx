@@ -79,10 +79,13 @@
 
 // *********************************************** So sánh giữa redux saga và redux thunk
 /**
+ * - Redux thunk và Redux Saga đều là middleware
  * + Redux Thunk
  *    + Ưu điểm
- *        - Cú pháp ngắn gọn
+ *        - Cú pháp ngắn gọn (chỉ cần dispatch lên action là function là được)
  *        - Kiến trúc đơn giản dễ hiểu
+ *        - vẫn sẽ làm việc tốt nếu như chúng ta tổ chức tốt cho nó
+ *        - Những người mới tìm hiểu rất khó để tổ chức tốt được nên thường sẽ làm ko hiệu quả với Redux thunk, còn đối với những người tổ chức tốt thì redux thunk vẫn được sử dụng nhiều trong các dự án.
  *    + Nhược điểm
  *        - Logic tổ chức không tốt khó quản lý về sau(test hoặc maintenance code sau này)
  *
