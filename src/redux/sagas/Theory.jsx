@@ -76,3 +76,21 @@
 
 // ********************************************** Nên đi từ file service kết nối với APi rồi đi vào các file của saga để xử lý
 // Sau  đó đưa vào rootSaga
+
+// *********************************************** So sánh giữa redux saga và redux thunk
+/**
+ * + Redux Thunk
+ *    + Ưu điểm
+ *        - Cú pháp ngắn gọn
+ *        - Kiến trúc đơn giản dễ hiểu
+ *    + Nhược điểm
+ *        - Logic tổ chức không tốt khó quản lý về sau(test hoặc maintenance code sau này)
+ *
+ * + Redux Saga
+ *    + Ưu điểm
+ *        - Do tách riêng side-effect ra khỏi action nên việc testing là dễ dàng hơn Redux-thunk
+ *        - Giữ cho action pure synchronos theo chuẩn Redux và loại bỏ hoàn toàn callback theo javascript truyền thống.
+ *    + Nhược điểm
+ *        - Function ko viết được dạng arrow-function
+ *        - Phải hiểu về Generator function và các khái niệm trong saga pattern
+ */
