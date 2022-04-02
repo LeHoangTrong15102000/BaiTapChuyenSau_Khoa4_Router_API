@@ -71,6 +71,16 @@ const Header = () => {
               Profile
             </NavLink>
           </li>
+          <li className="nav-item dropdown">
+            <NavLink
+              activeClassName="activeNavItem"
+              activeStyle={{ fontWeight: 'bold' }}
+              className="nav-link"
+              to="/demohocmodal"
+            >
+              DemoHOC
+            </NavLink>
+          </li>
 
           <li className="nav-item dropdown">
             <a
@@ -95,6 +105,9 @@ const Header = () => {
               </NavLink>
               <NavLink className="dropdown-item" to="/todolistsaga">
                 Todo List Saga
+              </NavLink>
+              <NavLink className="dropdown-item" to="/demohocmodal">
+                Demo HOC Modal
               </NavLink>
             </div>
           </li>

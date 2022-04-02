@@ -20,11 +20,17 @@ import TodoList from './pages/TodoList/TodoList';
 import TodoListRedux from './pages/TodoList/TodoListRedux';
 import TodoListSaga from './pages/BaiTapTodoListSaga/TodoListSaga';
 import LoadingComponent from './components/GlobalSetting/LoadingComponent/LoadingComponent';
+import DemoHOCModal from './pages/DemoHOCModal/DemoHOCModal'
+import { Modal } from 'bootstrap';
+import ModalPopup from './HOC/Modal/ModalPopup';
+
+// <Modal /> trong thằng App mặc định là nó ẩn nên(chứ thật ra là nó luôn luôn hiển thị)
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
+      <ModalPopup />
       <LoadingComponent />
       <Switch>
         <Route exact path="/home" component={Home} />
@@ -37,6 +43,7 @@ function App() {
         <Route exact path="/todolistrcc" component={TodoList} />
         <Route exact path="/todolistredux" component={TodoListRedux} />
         <Route exact path="/todolistsaga" component={TodoListSaga} />
+        <Route exact path="/demohocmodal" component={DemoHOCModal} />
 
         <Route exact path="/" component={Home} />
         {/* Chuyển tới trang 404 ERROR khi người dùng nhập vào tầm bậy */}
