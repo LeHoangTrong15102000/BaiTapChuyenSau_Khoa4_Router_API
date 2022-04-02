@@ -25,5 +25,10 @@
 
 // ************************************************************ HOC qua ví dụ slide down-content
 // Có thể ứng dụng cho trang đăng kí những cái high order component như animation trượt
+// Sử dụng dưới dạng thẻ  thì phải sử dụng function , còn bình thường thì phải binding nó ra 
+/**
+ * Nơi định nghĩa nếu chỉ là JSX thì chỉ cần binding ra là được
+ * Còn nơi định nghĩa là một function thì phải trả về một JSX   
+ */
 
 // ********************************************************** Ứng dụng template React
