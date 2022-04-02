@@ -184,30 +184,30 @@ function* doneTaskApiAction(action) {
     type: DISPLAY_LOADING,
   });
   yield delay(500);
-  
-  let { taskName } = action
+
+  let { taskName } = action;
   try {
-    const {data, status } = yield call(() => {
-      return todoListService.doneTaskApi(taskName)
-    })
+    const { data, status } = yield call(() => {
+      return todoListService.doneTaskApi(taskName);
+    });
     // Sau khi lấy được APi rồi thì ta set lại
     if (status === STATUS_CODE.SUCCESS) {
       //set lại danh sách taskList
       yield put({
-        type: GET_TASKLIST_API
-      })
+        type: GET_TASKLIST_API,
+      });
     }
   } catch (error) {
-    console.log("error", error)
+    console.log('error', error);
   }
-  
+
   yield put({
-    type: HIDE_LOADING
-  })
+    type: HIDE_LOADING,
+  });
 }
 
 export function* followActionDoneTaskApi() {
-  yield takeLatest(DONE_TASK_API, doneTaskApiAction)
+  yield takeLatest(DONE_TASK_API, doneTaskApiAction);
 }
 
 /**
@@ -220,27 +220,26 @@ function* rejectTaskApiAction(action) {
   });
   yield delay(500);
 
-  let { taskName } = action
+  let { taskName } = action;
   try {
-    const { data , status } = yield call(() => {
-      return todoListService.rejectTaskApi(taskName)
-    })
+    const { data, status } = yield call(() => {
+      return todoListService.rejectTaskApi(taskName);
+    });
 
     if (status === STATUS_CODE.SUCCESS) {
       yield put({
-        type: GET_TASKLIST_API
-      })
+        type: GET_TASKLIST_API,
+      });
     }
   } catch (error) {
-    console.log("errors", error)
+    console.log('errors', error);
   }
 
   yield put({
-    type: HIDE_LOADING
-  })
+    type: HIDE_LOADING,
+  });
 }
 
 export function* followActionRejectTaskApi() {
-  yield takeLatest(REJECT_TASK_API, rejectTaskApiAction)
+  yield takeLatest(REJECT_TASK_API, rejectTaskApiAction);
 }
- 

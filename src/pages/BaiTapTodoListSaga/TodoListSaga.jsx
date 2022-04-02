@@ -165,8 +165,8 @@ const TodoListSaga = (props) => {
   // Button mà không để type là button thì nó sẽ hiểu là type là submit
   // Xử lý hàm DONE task
   const doneTaskName = (taskName) => {
-     // khi deleteTask thì gửi taskName lên, ở đây sẽ dispatch 1 cái action saga
-     dispatch({
+    // khi deleteTask thì gửi taskName lên, ở đây sẽ dispatch 1 cái action saga
+    dispatch({
       // Khi ta dispatch lên thì trên saga nó sẽ lặng nghe sự kiện của chúng ta
       type: DONE_TASK_API, // phải viết đúng type của nó , thì trên reducer xem đúng type thì nó mới xử lý
       taskName: taskName,
@@ -175,8 +175,8 @@ const TodoListSaga = (props) => {
 
   // xử lý hàm undo cho taskName
   const rejectTaskName = (taskName) => {
-     // khi deleteTask thì gửi taskName lên, ở đây sẽ dispatch 1 cái action saga
-     dispatch({
+    // khi deleteTask thì gửi taskName lên, ở đây sẽ dispatch 1 cái action saga
+    dispatch({
       // Khi ta dispatch lên thì trên saga nó sẽ lặng nghe sự kiện của chúng ta
       type: REJECT_TASK_API, // phải viết đúng type của nó , thì trên reducer xem đúng type thì nó mới xử lý
       taskName: taskName,
