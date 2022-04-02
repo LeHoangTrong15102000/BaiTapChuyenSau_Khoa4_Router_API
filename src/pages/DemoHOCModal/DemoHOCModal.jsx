@@ -1,7 +1,7 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import Login from "../Login/Login";
-import Register from "../Register/Register";
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import Login from '../Login/Login';
+import Register from '../Register/Register';
 
 // Để bật được modal thì modal phải được hiển thị trong ứng dụng của chúng ta
 // Bấm vào nút nào thì sẽ dispatch lên Reducer nút đó
@@ -13,7 +13,7 @@ const DemoHOCModal = (props) => {
       <button
         onClick={() => {
           dispatch({
-            type: "OPEN_FORM",// type giống nhau khác nhau giá trị Component truyền lên
+            type: 'OPEN_FORM', // type giống nhau khác nhau giá trị Component truyền lên
             Component: <Login />,
           });
         }}
@@ -26,10 +26,10 @@ const DemoHOCModal = (props) => {
       </button>
       <button
         onClick={() => {
-            dispatch({
-                type: 'OPEN_FORM',
-                Component: <Register />
-            })
+          dispatch({
+            type: 'OPEN_FORM',
+            Component: <Register />,
+          });
         }}
         type="button"
         className="btn btn-success btn-lg"
